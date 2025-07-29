@@ -1,0 +1,55 @@
+package cartaoCredito.programa;
+
+import cartaoCredito.entidade.Cliente;
+
+import java.util.Locale;
+import java.util.Scanner;
+
+public class Programa {
+    public static void main(String[] args) {
+        Locale.setDefault(Locale.US);
+        Scanner sc = new Scanner(System.in);
+
+        Cliente cliente;
+
+        System.out.print("Digite o nome do cliente: ");
+        String nome = sc.nextLine();
+        System.out.print("Digite o CPF do cliente: ");
+        String cpf = sc.next();
+        System.out.print("O cartão possui limite inicial (s/ n) ? ");
+        char resposta = sc.next().charAt(0);
+
+        if (resposta == 's'){
+            System.out.print("Qual o valor do limite: ");
+            double limiteInicial = sc.nextDouble();
+            cliente = new Cliente(nome, cpf, limiteInicial);
+        }else {
+            cliente = new Cliente(nome, cpf);
+        }
+
+        System.out.println();
+        System.out.println(cliente);
+
+        System.out.println();
+        System.out.print("Quanto deseja dar de aumento ao cliente: ");
+        double aumento = sc.nextDouble();
+        cliente.aumentar(aumento);
+
+        System.out.println();
+        System.out.println(cliente);
+
+        System.out.println();
+        System.out.print("Qual o valor da compra que o cliente quer realizar: ");
+        double compra = sc.nextDouble();
+        if (compra <= cliente.getCartao()){
+            cliente.compra(compra);
+        }else {
+            System.out.println("Limite indisponível");
+        }
+
+        System.out.println();
+        System.out.println(cliente);
+
+
+    }
+}
