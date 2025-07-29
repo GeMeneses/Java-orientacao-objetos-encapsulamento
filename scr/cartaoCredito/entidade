@@ -1,0 +1,62 @@
+package cartaoCredito.entidade;
+
+public class Cliente {
+
+    private String nome;
+    private String cpf;
+    private double cartao;
+
+    public Cliente(String nome, String cpf, double cartao) {
+        this.nome = nome;
+        this.cpf = cpf;
+        this.cartao = cartao;
+    }
+
+    public Cliente(String nome, String cpf) {
+        this.nome = nome;
+        this.cpf = cpf;
+        aumentar(1000.00);
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public double getCartao() {
+        return cartao;
+    }
+
+    public void aumentar(double maior) {
+        cartao += maior;
+
+    }
+
+    public void compra(double comprar) {
+        cartao -= comprar;
+    }
+
+    public String toString() {
+        return "Dados do cliente: \n"
+                + "Nome: "
+                + nome + "\n"
+                + "CPF: "
+                + cpf + "\n"
+                + "Limite do Cartão: R$"
+                + String.format("%.2f", cartao);
+    }
+}
+
+
+
+
+
+
+
