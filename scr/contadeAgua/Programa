@@ -1,0 +1,51 @@
+package contaAgua.programa;
+
+import contaAgua.entidade.ContaAgua;
+
+import java.lang.invoke.StringConcatFactory;
+import java.util.Locale;
+import java.util.Scanner;
+
+public class Programa {
+    public static void main(String[] args) {
+        Locale.setDefault(Locale.US);
+        Scanner sc = new Scanner(System.in);
+
+        ContaAgua contaAgua;
+
+        System.out.print("Entre com o número da conta:");
+        int conta = sc.nextInt();
+        sc.nextLine();
+        System.out.print("Entre com o nome do titular: ");
+        String titular = sc.nextLine();
+        System.out.print("Possui consumo inicial? (s/n)");
+        char resposta = sc.next().charAt(0);
+
+        if(resposta == 's'){
+            System.out.println("Quantidade do consumo em metros cubicos: ");
+            double consumoInicial = sc.nextDouble();
+            contaAgua = new ContaAgua(conta, titular, consumoInicial);
+        }else {
+            contaAgua = new ContaAgua(conta, titular);}
+
+        System.out.println();
+        System.out.println(contaAgua);
+
+        System.out.println("Entre com o o consumo em metros cubicos: ");
+        double consumo = sc.nextDouble();
+        contaAgua.calculoConsumo(consumo);
+
+        System.out.println(contaAgua);
+
+        System.out.println("Entre com valor a pagar: ");
+        double pagar = sc.nextDouble();
+        contaAgua.saldoPagar(pagar);
+
+        System.out.println(contaAgua);
+
+
+        sc.close();
+
+
+    }
+}
