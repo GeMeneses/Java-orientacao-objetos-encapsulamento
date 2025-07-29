@@ -1,0 +1,62 @@
+package contaAgua.entidade;
+
+public class ContaAgua {
+    private int conta;
+    private String titular;
+    private double consumo;
+    private double saldo;
+
+    public ContaAgua(int conta, String titular, double consumo){
+        this.conta = conta;
+        this.titular = titular;
+        this.consumo = consumo;
+        this.saldo = consumo * 2.50;
+    }
+
+    public ContaAgua(int conta, String titular){
+        this.conta = conta;
+        this.titular = titular;
+        this.consumo = 0;
+        this.saldo = 0;
+    }
+
+    public int getConta(){
+        return conta;
+    }
+    public String getTitular(){
+        return titular;
+    }
+
+    public void setTitular(String titular) {
+        this.titular = titular;
+    }
+
+    public double getConsumo(){
+        return consumo;
+    }
+
+    public double getSaldo(){
+        return saldo;
+    }
+
+
+    public void calculoConsumo(double metro){
+        consumo += metro ;
+        saldo += metro * 2.50;
+
+    }
+
+    public void saldoPagar(double valorPago){
+        saldo -= valorPago;}
+
+    public String toString(){
+        return "Dados da conta: \n"
+                +"Titular: " + titular + "\n"
+                +"Conta: " + conta + "\n"
+                +"Consumo: " + consumo + "\n"
+                +"Saldo: " + saldo;}
+
+
+
+
+}
